@@ -1,5 +1,6 @@
 package edu.neu.csye7374;
 
+
 public abstract class Stock implements Tradable {
     protected String name;
     protected double price;
@@ -13,15 +14,6 @@ public abstract class Stock implements Tradable {
 
     @Override
     public String toString() {
-        return String.format("Stock ID: %s, Price: $%.2f, Description: %s", name, price, description);
-    }
-
-
-    public double getPrice() {
-        return price;
-    }
-
-    public String getName() {
-        return name;
+        return String.format("%s [%.2f]: %s", name, price, description);
     }
 }

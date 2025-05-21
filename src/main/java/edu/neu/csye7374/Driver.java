@@ -2,11 +2,30 @@ package edu.neu.csye7374;
 
 public class Driver {
     public static void main(String[] args) {
-        System.out.println("============Main Execution Start===================\n\n");
+        StockMarket market = StockMarket.getInstance();
 
-        //Add your code in between these two print statements
-        StockMarket.demo();
-        System.out.println("\n\n============Main Execution End===================");
+        System.out.println("Creating stocks...");
+        Stock tech = new TechStock("TechCo", 150.0, "Innovative tech company");
+        Stock energy = new EnergyStock("EnergyInc", 90.0, "Energy sector stock");
+
+        market.addStock(tech);
+        market.addStock(energy);
+
+        String[] bids = {"5.0", "3.5", "2.0", "-1.0", "0.5", "-0.5"};
+
+        for (String bid : bids) {
+            market.tradeStock("TechCo", bid);
+        }
+
+        System.out.println("\n");
+        for (String bid : bids) {
+            market.tradeStock("EnergyInc", bid);
+        }
+
+        market.showAllStocks();
+
+        market.removeStock("TechCo");
+
+        market.showAllStocks();
     }
 }
-
